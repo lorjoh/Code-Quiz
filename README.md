@@ -1,6 +1,6 @@
 # Quiz Code Challenge
 
-I found this quiet challenge as a result the a few features are not working.
+I found this quite challenging. As a result, a few of the features are not working.
 
 
 #Issues
