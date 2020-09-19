@@ -80,17 +80,17 @@ function timer() {
 
     if (quizTimeCount === 0) {
       clearInterval(timeInterval);
-          }
+    }
   }, 1000);
 };
 
 function timeReduced() {
   var deduction = 10;
-  totalTime = totalTime - deduction;
-  totalTime = totalTime - 10;
-  return totalTime;
+  deduction--;
+  newTimeCount = totalTime - deduction;
+  newTimeCount = totalTime - 10;
 
-
+  return quizTimeCount.push(timeReduced);
 }
 
 function getQuizOptions() {
@@ -132,28 +132,36 @@ function getAnswer() {
 
   var answerEl = document.createElement("h4");
   answerEl.setAttribute("class", "answer");
-
+ 
   var Answer = ["Wrong!", "Correct!"];
 
   answerContainer.append(answerEl);
 
-  if (
-    this.value !== myQuizList[i].answer) {
-    answerEl.textContent = Answer[0];
-    console.log(Answer[0]);
-    timeReduced();
-  }
-  else {
-    answerEl.textContent = Answer[1];
-    decider.push(myQuizList[i].Quiz[i])
-    console.log(Answer[1]);
-  }
-  getQuizOptions();
-  i++;
-  getQuizOptions();
-  
+  // if (i <= quizCount) { 
+    if (this.value !== myQuizList[i].answer) {
+      
+      answerEl.textContent = Answer[0];
+      console.log(Answer[0]);
+      timeReduced;
 
+    }
+
+    else if (this.value === myQuizList[i].answer) {
+
+      answerEl.textContent = Answer[1];
+      decider.push(myQuizList[i].Quiz[i])
+      console.log(Answer[1]);
+    }
+
+    i++;
+    getQuizOptions();
+
+
+
+  // }
+  // else { getInitials; }
 }
+
 
 function getInitials() {
 
@@ -182,6 +190,7 @@ function getInitials() {
   SubmitBtn.setAttribute("class", "button:hover");
   labelEl.setAttribute("class", "h4Text");
   SumbitBtn.setAttribute("id", "Submit");
+
 }
 
 
@@ -189,11 +198,12 @@ function getStarted() {
   timer();
   quizTitle.setAttribute("class", "hide");
   console.log("start game");
+
   getQuizOptions();
-  
-   getInitials();
+  // getAnswer();
+  // BtnContainerEl.setAttribute("class", "hide");
+  // getInitials();
 
 };
 
 StartBtn.addEventListener("click", getStarted);
-
